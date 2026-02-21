@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Void</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
 
@@ -16,7 +17,7 @@
   <!-- Nav -->
   <nav>
     <span class="nav-logo">The Void</span>
-    <button class="btn-nav" onclick="openForm()">GIB FEEDBACK →</button>
+    <button class="btn-nav" id="btn-gib">GIB FEEDBACK →</button>
   </nav>
 
   <!-- Hero -->
@@ -47,43 +48,35 @@
         <div class="counter-label">Reviews to date</div>
       </div>
       <div class="sort-buttons">
-        <button class="btn-sort active" data-sort="recent" onclick="setSort('recent')">Recent</button>
-        <button class="btn-sort" data-sort="top" onclick="setSort('top')">Most Upvoted</button>
+        <button class="btn-sort active" data-sort="recent">Recent</button>
+        <button class="btn-sort" data-sort="top">Most Upvoted</button>
       </div>
     </div>
-
     <div id="reviews-list">
       <div class="status">Loading reviews...</div>
     </div>
   </div>
 
   <!-- Modal -->
-  <div class="modal-backdrop" id="modal-backdrop" style="display:none" onclick="if(event.target===this)closeForm()">
+  <div class="modal-backdrop" id="modal-backdrop" style="display:none">
     <div class="modal">
       <h2>Gib Feedback</h2>
       <p class="subtitle">All reviews are posted to the community. Keep it honest.</p>
-
       <label class="field-label">Your alias</label>
       <div id="alias-input-wrap">
-        <input class="field-input" id="field-alias" placeholder="e.g. FreightWatcher, BulkBuyer_Z..." oninput="handleInput()" />
+        <input class="field-input" id="field-alias" placeholder="e.g. FreightWatcher, BulkBuyer_Z..." />
       </div>
-
-      <div class="anon-row" onclick="toggleAnon()">
-        <div class="anon-checkbox" id="anon-checkbox">
-          <span class="check">✓</span>
-        </div>
+      <div class="anon-row">
+        <div class="anon-checkbox" id="anon-checkbox"><span class="check">✓</span></div>
         <span class="anon-label">Post anonymously — no alias</span>
       </div>
-
       <label class="field-label">Review title</label>
-      <input class="field-input" id="field-title" placeholder="Sum it up in one line" oninput="handleInput()" />
-
+      <input class="field-input" id="field-title" placeholder="Sum it up in one line" />
       <label class="field-label">Your experience</label>
       <textarea class="field-input field-textarea" id="field-body" rows="4" placeholder="What happened? Be specific — this helps the community."></textarea>
-
       <div class="modal-actions">
-        <button class="btn-cancel" onclick="closeForm()">Cancel</button>
-        <button class="btn-post" id="btn-post" onclick="submitForm()" disabled>POST →</button>
+        <button class="btn-cancel" id="btn-cancel">Cancel</button>
+        <button class="btn-post" id="btn-post" disabled>POST →</button>
       </div>
     </div>
   </div>
@@ -91,6 +84,5 @@
   <!-- Toast -->
   <div class="toast" id="toast" style="display:none">✓ Posted</div>
 
-  <script src="app.js"></script>
 </body>
 </html>
