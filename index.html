@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Void</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Mascot -->
+  <div class="mascot">
+    <img id="mascot-img" src="" alt="" />
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <span class="nav-logo">The Void</span>
+    <button class="btn-nav" onclick="openForm()">GIB FEEDBACK →</button>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Anonymous<br />Feedback<br />from Bulkers.</h1>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Most Upvoted Marquee -->
+  <div class="marquee-section" id="marquee-section">
+    <div class="marquee-header">
+      <span class="marquee-label">Most Upvoted by the Community</span>
+      <div class="marquee-line"></div>
+    </div>
+    <div class="marquee-track-outer">
+      <div class="marquee-track" id="marquee-track"></div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Main -->
+  <div class="main">
+    <div class="counter-row">
+      <div>
+        <div class="counter-num" id="review-count">0</div>
+        <div class="counter-label">Reviews to date</div>
+      </div>
+      <div class="sort-buttons">
+        <button class="btn-sort active" data-sort="recent" onclick="setSort('recent')">Recent</button>
+        <button class="btn-sort" data-sort="top" onclick="setSort('top')">Most Upvoted</button>
+      </div>
+    </div>
+
+    <div id="reviews-list">
+      <div class="status">Loading reviews...</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal-backdrop" style="display:none" onclick="if(event.target===this)closeForm()">
+    <div class="modal">
+      <h2>Gib Feedback</h2>
+      <p class="subtitle">All reviews are posted to the community. Keep it honest.</p>
+
+      <label class="field-label">Your alias</label>
+      <div id="alias-input-wrap">
+        <input class="field-input" id="field-alias" placeholder="e.g. FreightWatcher, BulkBuyer_Z..." oninput="handleInput()" />
+      </div>
+
+      <div class="anon-row" onclick="toggleAnon()">
+        <div class="anon-checkbox" id="anon-checkbox">
+          <span class="check">✓</span>
+        </div>
+        <span class="anon-label">Post anonymously — no alias</span>
+      </div>
+
+      <label class="field-label">Review title</label>
+      <input class="field-input" id="field-title" placeholder="Sum it up in one line" oninput="handleInput()" />
+
+      <label class="field-label">Your experience</label>
+      <textarea class="field-input field-textarea" id="field-body" rows="4" placeholder="What happened? Be specific — this helps the community."></textarea>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeForm()">Cancel</button>
+        <button class="btn-post" id="btn-post" onclick="submitForm()" disabled>POST →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" style="display:none">✓ Posted</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
